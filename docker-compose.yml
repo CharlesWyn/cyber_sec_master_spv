@@ -12,6 +12,8 @@ services:
     build: 
       context: .
       dockerfile: ./docker/Dockerfile.attack
+    deploy:
+      replicas : 4 #1000
     depends_on:
       - fail2ban
     networks:
@@ -46,7 +48,7 @@ services:
     image: nginx:stable-alpine3.17-slim
     restart: always
     ports:
-      - "172.100.30.1:80:80"
+      - "8080:80"
     networks:
       - internet
       - infra
